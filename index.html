@@ -39,27 +39,9 @@ textarea{min-height:130px;resize:vertical}
 .tip{border-left:6px solid var(--p)}
 .hide{display:none}
 .mark{background:var(--hi);padding:0 4px;border-radius:4px}
-/* worksheet */
-#sheet{background:#fff;color:#111;border:2px dashed var(--line);border-radius:12px;padding:22px;margin-top:12px}
-#sheet h2{font-size:1.4rem;margin-bottom:4px}
-#sheet .nm{display:flex;justify-content:space-between;border-bottom:2px solid #111;margin:10px 0 16px;padding-bottom:4px;font-size:.95rem}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px 60px}
-.mt{padding:8px 10px;border:2px solid #111;border-radius:8px;font-size:1.15rem;display:flex;justify-content:space-between;align-items:center}
-.dot{width:12px;height:12px;border:2px solid #111;border-radius:50%}
-.tr{font:600 1.7rem Fredoka,sans-serif;color:#aaa;border-bottom:1.5px solid #888;margin:6px 0 14px;word-break:break-word}
-.tr span{color:#111}
-.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-.fc{border:1.5px dashed #555;padding:22px 8px;text-align:center;font:600 1.3rem Fredoka,sans-serif}
-.fc small{display:block;font:400 .85rem "Atkinson Hyperlegible",sans-serif;color:#555;margin-top:6px}
-.ln{border-bottom:1.5px solid #888;height:34px}
-.draw{border:2px solid #111;border-radius:10px;height:200px;margin:10px 0}
-.bank{border:2px solid #111;border-radius:10px;padding:8px 12px;margin:10px 0;font-weight:700}
-@media print{
- body{background:#fff}nav,header,.card,.noprint{display:none!important}
- main{padding:0;max-width:none}
- #sheet{display:block!important;border:none;padding:0;margin:0}
-}
-@media (max-width:520px){.two{gap:10px 24px}.cards{grid-template-columns:1fr 1fr}}
+.shop{background:var(--soft);border:none}
+.shop h2{font-size:1.35rem;margin-bottom:6px}
+a.btn{display:inline-block;text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style></head>
 <body><main>
@@ -78,13 +60,13 @@ textarea{min-height:130px;resize:vertical}
  <div class="card"><h2>Your family</h2>
   <div class="row">
    <label>Child’s name<input id="nm" placeholder="e.g. Mia"></label>
-   <label>Age<select id="age"><option value="0">2–3</option><option value="1" selected>4–6</option><option value="2">7–9</option><option value="3">10+</option></select></label>
+   <label>Age<select id="age"><option value="0">1–2</option><option value="1" selected>2–3</option><option value="2">3–4</option><option value="3">4–5</option><option value="4">5–6</option></select></label>
   </div>
   <div class="row" style="margin-top:10px">
    <label>Language that needs the most support<input id="la" placeholder="e.g. Afrikaans"></label>
    <label>Other language<input id="lb" placeholder="e.g. Mandarin"></label>
   </div></div>
- <div class="card hero"><h2>Today’s idea</h2><div id="today"></div></div>
+ <div class="card hero"><h2>Today’s idea</h2><div class="row" style="margin-bottom:10px"><label>Skill<select id="ts"><option value="">Any</option><option>Speak</option><option>Listen</option><option>Read</option><option>Write</option><option>Play</option></select></label><label>Where<select id="tw"><option value="">Anywhere</option><option>Home</option><option>Car</option><option>Outdoors</option><option>Bedtime</option></select></label></div><div id="today"></div></div>
  <div class="card"><h2>A word for you</h2><p class="quote" id="mot"></p>
   <div class="acts"><button class="btn alt" id="mot2">Another one</button></div></div>
 </section>
@@ -100,12 +82,10 @@ textarea{min-height:130px;resize:vertical}
 </section>
 
 <section id="ws" class="hide">
- <div class="card"><h2>Make a worksheet</h2>
-  <p class="sub">Type one pair per line, like <b>dog = hond</b>. Use your own words or load samples.</p>
-  <div class="row" style="margin-top:10px"><label style="flex-basis:100%">Word pairs<textarea id="words" placeholder="dog = hond&#10;house = huis"></textarea></label>
-  <label>Type<select id="wt"><option value="match">Match the words</option><option value="trace">Copy and trace</option><option value="quiz">Translate and write</option><option value="cards">Flashcards to cut out</option><option value="journal">My day journal</option></select></label></div>
-  <div class="acts"><button class="btn" id="mk">Create worksheet</button><button class="btn alt" id="smp">Load sample words</button><button class="btn alt hide noprint" id="pr">🖨 Print or save PDF</button></div></div>
- <div id="sheet" class="hide"></div>
+ <div class="card shop"><h2>Printable worksheets</h2>
+  <p>Ready-made worksheets to help your child build their language skills.</p>
+  <div class="acts"><a class="btn" href="https://payhip.com/b/yLc8B" target="_blank" rel="noopener">Get the worksheets</a></div>
+  <p class="sub">Opens in a new tab on Payhip.</p></div>
 </section>
 
 <section id="tips" class="hide"><div class="card"><div class="row"><label>Topic<select id="tc"><option value="">All tips</option></select></label></div></div><div id="tlist"></div></section>
@@ -126,30 +106,180 @@ const save=()=>{try{localStorage.setItem('manytongues',JSON.stringify(S))}catch(
 
 /* [title, skill, where, minutes, ages, steps] — {A} focus language, {B} other language, {N} child */
 const AC=[
-["Language of the Hour","Speak","Home",15,[0,1,2,3],["Pick one hour (after dinner works well) when everyone uses only {A}.","Use gestures, pictures or a whispered translation when {N} gets stuck.","End with a high five and name one new word you learned."]],
-["Show-and-Tell Basket","Speak","Home",10,[0,1],["Fill a basket with five small objects.","{N} pulls one out and names it in {A}, then tries it in {B}.","Swap: you ‘forget’ a word and let {N} teach you."]],
-["I Spy in Two Languages","Play","Car",10,[1,2],["Play I spy using colours in {A}.","The guesser says the object’s name in {B}.","Score a point for every extra word used."]],
-["Story Chain","Speak","Car",15,[1,2,3],["Start a story with one sentence in {A}.","Each person adds a sentence.","When someone shouts ‘plot twist!’ the next sentence switches to {B}."]],
-["Kitchen Words","Speak","Home",20,[0,1,2],["Cook something simple together.","Name ingredients, tools and actions (stir, pour, taste) in {A}.","Read the recipe steps aloud in {A} before you start."]],
-["Bedtime Retell","Listen","Bedtime",10,[0,1,2],["Read a short story in {A}.","Next night, {N} retells it using the pictures.","Praise the effort, not the grammar."]],
-["Song Swap","Listen","Anywhere",10,[0,1,2],["Choose a song in {A}.","Learn the chorus line by line and add actions.","Perform it for a grandparent or a stuffed toy."]],
-["Label the House","Write","Home",20,[0,1,2],["Write ten household words in {A} on sticky notes.","Stick them on the right objects.","Draw a small star on each note when {N} can say it without looking."]],
-["Postcard to Family","Write","Home",20,[1,2,3],["Write or draw a postcard to a relative in {A}.","Add one sentence about the best thing this week.","Send it, or photograph it and share."]],
-["Voice Message Pen Pals","Speak","Anywhere",10,[1,2,3],["Record a short voice message in {A} for a relative or friend.","Ask them a question to answer next time.","Keep the messages to hear progress later."]],
-["Treasure Hunt Clues","Read","Home",25,[1,2],["Write five short clues in {A}, one hiding place each.","{N} reads each clue aloud and finds the next.","The last clue leads to a small treat."]],
-["Question Jar","Speak","Home",10,[1,2,3],["Fill a jar with questions in {A}: ‘What made you laugh today?’","Each person draws one at dinner.","Answer in {A}, even if it’s only a few words."]],
-["Walk and Name","Speak","Outdoors",15,[0,1],["Take a short walk.","Name everything you see in {A}: trees, cars, birds.","Collect three leaves or stones and name them again at home."]],
-["Look-alike Words","Read","Anywhere",10,[2,3],["Hunt for words that look or sound similar in {A} and {B}.","Make a list together.","Talk about why languages share words."]],
-["Puppet Show","Play","Home",20,[0,1,2],["One puppet only speaks {A}, the other only {B}.","They have a problem that needs both languages to solve.","{N} is the translator."]],
-["Picture-Book Read-Aloud","Read","Bedtime",20,[0,1,2,3],["Read a picture book in {A}.","Pause on each page: ‘What do you see?’","End with three questions: who, where, what happened?"]],
-["Comic Strip Maker","Write","Home",25,[2,3],["Fold a page into four panels.","Draw a mini story with speech bubbles in {A}.","Read it aloud like actors."]],
-["Memory Match","Play","Home",15,[0,1,2],["Make pairs of cards: a word in {A} and a picture, or the same word in {B}.","Turn them face down and play.","Say each word aloud when you flip it."]],
-["Number Hop","Play","Outdoors",10,[0,1],["Chalk numbers 1 to 10 on the ground.","Call a number in {A}; {N} hops to it.","Swap and let {N} call them."]],
-["Family Interview","Speak","Anywhere",10,[2,3],["Write five questions in {A}.","Interview a parent, grandparent or friend.","Write down one surprising answer."]],
-["Two-Language Gratitude","Speak","Bedtime",5,[0,1,2,3],["Each person shares one thing they are thankful for in {A}.","Say it again in {B}.","Switch who goes first each night."]],
-["Podcast Time","Listen","Car",20,[2,3],["Play a kids’ podcast or audiobook in {A}.","Pause at the end and ask for the best moment.","Retell it in one sentence."]],
-["Charades","Play","Home",15,[1,2,3],["Write verbs in {A} on slips of paper.","Act one out; others guess in {A}.","Winner picks the next verb."]],
-["Pretend Shop","Play","Home",20,[0,1,2],["Set up a shop with real items and play money.","Practise greetings, prices and ‘please’ and ‘thank you’ in {A}.","Swap shopkeeper and customer."]]
+/* ===== SPEAK ===== */
+["Language of the Hour","Speak","Home",15,[1,4],["Pick one hour (after dinner works well) when everyone uses only {A}.","Use gestures, pictures or a whispered translation when {N} gets stuck.","End with a high five and name one new word you learned."]],
+["Show-and-Tell Basket","Speak","Home",10,[0,3],["Fill a basket with five small objects.","{N} pulls one out and names it in {A}, then tries it in {B}.","Swap: you ‘forget’ a word and let {N} teach you."]],
+["Kitchen Words","Speak","Home",20,[0,4],["Cook something simple together.","Name ingredients, tools and actions (stir, pour, taste) in {A}.","Let {N} choose what goes in next, using the word in {A}."]],
+["Question Jar","Speak","Home",10,[2,4],["Fill a jar with questions in {A}: ‘What made you laugh today?’","Each person draws one at dinner.","Answer in {A}, even if it’s only a few words."]],
+["Pretend Phone Call","Speak","Home",10,[0,3],["Give {N} a toy phone and keep one yourself.","Call in {A}: ‘Hello {N}, how are you today?’","Let {N} answer with words or sounds, then pass the phone to a doll or a grandparent."]],
+["Mirror Faces","Speak","Home",10,[0,2],["Stand at a mirror together and make a happy face.","Say ‘happy’ in {A} and let {N} copy the face and the word.","Try sad, surprised and sleepy, taking turns to choose."]],
+["Dinner Table Turns","Speak","Home",15,[2,4],["Each person shares one thing from their day in {A}.","Others ask one follow-up question.","Short sentences count. Finish with a family cheer in {A}."]],
+["Teach Teddy","Speak","Home",10,[1,4],["Sit a teddy in front of {N} and say Teddy wants to learn {A}.","{N} teaches Teddy three words using a picture or toy.","Let Teddy ‘get it wrong’ so {N} can fix it."]],
+
+["Story Chain","Speak","Car",15,[2,4],["Start a story with one sentence in {A}.","Each person adds a sentence.","When someone shouts ‘plot twist!’ the next sentence switches to {B}."]],
+["Name It Along the Road","Speak","Car",10,[0,3],["Point out what you see: car, tree, dog, bridge.","Say each word in {A} and let {N} repeat or point.","Count how many different words you collected by the end."]],
+["Sing-Along Stop","Speak","Car",10,[0,4],["Sing a familiar song in {A}.","Stop before the last word of a line.","{N} fills in the missing word, then you swap roles."]],
+["Guess My Animal","Speak","Car",10,[1,4],["Make an animal sound or give a clue in {A}.","{N} guesses the animal and says its name.","Swap, so {N} gives the clues."]],
+["Where Are We Going?","Speak","Car",10,[2,4],["Tell {N} the plan for the day in {A}.","Ask {N} to repeat one part back.","Finish with: ‘What do you think we will see?’"]],
+["Rhyme Time","Speak","Car",10,[2,4],["Say a short word in {A}.","{N} answers with a word that rhymes or starts with the same sound, even a silly one.","Keep going until you run out of words, then pick a new one."]],
+["Weather Report","Speak","Car",5,[1,4],["Look out of the window together.","Say sunny, cloudy or rainy in {A}.","{N} gives a short weather report like a TV presenter."]],
+
+["Walk and Name","Speak","Outdoors",15,[0,3],["Take a short walk.","Name everything you see in {A}: trees, cars, birds.","Collect three leaves or stones and name them again at home."]],
+["Park Commentary","Speak","Outdoors",10,[2,4],["At the playground, narrate in {A}: ‘Up the slide!’","{N} copies you.","Swap: {N} narrates and you do the actions."]],
+["Nature Show-and-Tell","Speak","Outdoors",15,[1,4],["Collect a few leaves, stones or flowers.","Sit down and name the colour and shape of each in {A}.","{N} picks a favourite and tells you why, in a word or a sentence."]],
+["Market Shopper","Speak","Outdoors",15,[1,4],["At a market or shop, name fruit and vegetables in {A}.","{N} asks for one item using the word.","Say thank you in {A} when you pay."]],
+["Animal Sounds Safari","Speak","Outdoors",10,[0,2],["Spot birds, dogs, insects or ducks.","Say the animal’s name and sound in {A}.","{N} copies, then picks the next animal."]],
+["Follow the Leader Words","Speak","Outdoors",10,[1,4],["{N} leads a walk and calls the actions in {A}: hop, spin, stop.","Everyone copies.","Swap leaders and add a new action word."]],
+["Picnic Talk","Speak","Outdoors",20,[1,4],["Pack a small picnic and sit on a blanket.","Ask for food in {A}: ‘More please’, ‘Apple’.","Take turns being the waiter."]],
+["Cloud Stories","Speak","Outdoors",10,[2,4],["Lie on the grass and find shapes in the clouds.","Describe one in {A}.","{N} adds a detail: where is it going?"]],
+
+["Two-Language Gratitude","Speak","Bedtime",5,[1,4],["Each person shares one thing they are thankful for in {A}.","Say it again in {B}.","Switch who goes first each night."]],
+["Goodnight Roll Call","Speak","Bedtime",5,[0,3],["Say goodnight in {A} to each toy, family member and body part.","{N} copies each one.","End with a kiss and the goodnight words."]],
+["Tell Me About Your Day","Speak","Bedtime",10,[2,4],["Ask in {A}: ‘What was the best part of today?’","Repeat {N}’s answer back as a full sentence.","Share your own best part in {A}."]],
+["Whisper Words","Speak","Bedtime",5,[0,4],["Whisper three favourite words in {A}.","{N} whispers them back.","Let {N} choose a word for you to whisper."]],
+["Pillow Talk Questions","Speak","Bedtime",10,[3,4],["Ask one gentle question in {A}, such as ‘Who did you play with?’","Listen and wait for the answer.","Add one more word or detail to their answer and say it together."]],
+["Dream Planning","Speak","Bedtime",10,[2,4],["Ask in {A}: ‘What would you like to dream about?’","Add one detail and say it together.","Say goodnight with a short dream wish."]],
+["Bedtime Retell","Speak","Bedtime",10,[2,4],["Read a short story in {A}.","Next night, {N} retells it using the pictures.","Praise the effort, not the grammar."]],
+
+/* ===== LISTEN ===== */
+["Song Swap","Listen","Home",10,[0,4],["Choose a song in {A}.","Learn the chorus line by line and add actions.","Perform it for a grandparent or a stuffed toy."]],
+["Sound Detectives","Listen","Home",10,[1,4],["Close your eyes and listen for household sounds: tap, kettle, door.","Name each sound in {A}.","{N} makes a sound for you to guess."]],
+["Audiobook Hour","Listen","Home",20,[2,4],["Play a children’s audiobook in {A}.","{N} draws or builds while listening.","Ask: ‘Who was in the story?’"]],
+["Follow the Instruction","Listen","Home",10,[1,4],["Give a two-step instruction in {A}: ‘Get the cup and put it on the table.’","{N} acts it out.","Make the instructions sillier as you go."]],
+["Freeze Dance Party","Listen","Home",10,[0,4],["Play music in {A} and dance.","Pause the music and shout ‘freeze’ in {A}.","Whoever freezes last picks the next song."]],
+["Cartoon in Two Languages","Listen","Home",20,[1,4],["Watch a short cartoon in {A} together.","Pause once and ask what happened.","Let {N} mimic one line."]],
+["Which Word Is Different?","Listen","Home",10,[2,4],["Say three words in {A}, two of them the same.","{N} listens and picks the odd one out.","Swap roles and let {N} make the lists."]],
+["Story Sound Effects","Listen","Home",10,[0,3],["Read a book in {A} and make sound effects.","Agree on a cue word that {N} answers with a sound.","Add one new sound each page."]],
+
+["Podcast Time","Listen","Car",20,[3,4],["Play a kids’ podcast or audiobook in {A}.","Pause at the end and ask for the best moment.","Retell it in one sentence."]],
+["Car Playlist","Listen","Car",15,[0,4],["Make a playlist of songs in {A}.","Sing the chorus together.","Ask {N} to pick tomorrow’s first song."]],
+["Listen for the Word","Listen","Car",10,[1,4],["Choose a target word in {A}.","Clap or say ‘beep!’ every time you hear it in a song or story.","Pick a new word and play again."]],
+["Audio Story Road Trip","Listen","Car",20,[2,4],["Choose a short audio story in {A}.","Stop halfway and ask what will happen next.","Finish and compare guesses."]],
+["Nursery Rhyme Radio","Listen","Car",10,[0,2],["Play nursery rhymes in {A}.","Do the actions with your hands.","Repeat the favourite twice."]],
+["Guess the Sound","Listen","Car",10,[1,4],["Play recorded animal or vehicle sounds on a phone.","{N} guesses and names it in {A}.","Swap: {N} makes the sound for you."]],
+["Silly Instructions","Listen","Car",10,[1,4],["Give a silly instruction in {A}: ‘Wave to the tree!’","{N} does it.","Add a second instruction for a bigger challenge."]],
+
+["Sound Walk","Listen","Outdoors",15,[0,4],["Walk slowly and stop to listen.","Name each sound you hear in {A}: bird, wind, car.","Draw or point to your favourite sound at home."]],
+["Bird Song Bingo","Listen","Outdoors",15,[2,4],["Draw four squares: bird, wind, dog, car.","Tick off each sound you hear.","Say the word in {A} each time."]],
+["Sound Treasure Hunt","Listen","Outdoors",15,[1,4],["Hide a phone playing a song in {A}.","{N} follows the sound to find it.","Swap and hide it again."]],
+["Simon Says","Listen","Outdoors",15,[1,4],["Play Simon Says using {A} for the commands.","Start with body parts, then add actions.","Let {N} be Simon."]],
+["Whisper Down the Lane","Listen","Outdoors",15,[2,4],["Whisper a short phrase in {A} to the first person.","Pass it down the line.","The last person says it out loud. Compare!"]],
+["Storytime Under a Tree","Listen","Outdoors",15,[0,4],["Sit under a tree with a picture book in {A}.","Read it slowly and let {N} point at things.","Listen for one thing nearby afterwards and say its name."]],
+["Warm and Cold","Listen","Outdoors",10,[1,4],["Hide a toy.","Guide {N} in {A}: ‘warm’, ‘cold’, ‘left’, ‘right’.","Swap so {N} gives the clues."]],
+["Listen and Point","Listen","Outdoors",10,[0,3],["Say the name of something in {A}: tree, bird, cloud.","{N} points to it.","Add one new word each time."]],
+
+["Lullaby Ritual","Listen","Bedtime",5,[0,4],["Pick one lullaby in {A}.","Sing it softly every night.","After a week, pause so {N} can finish a line."]],
+["Bedtime Story Audio","Listen","Bedtime",15,[1,4],["Play a soft audio story in {A}.","Dim the lights and snuggle in.","Ask one question in the morning about it."]],
+["Slow Breathing Counts","Listen","Bedtime",5,[1,4],["Breathe in slowly and out slowly together.","Count to five in {A}.","Repeat three times."]],
+["Same Story Every Night","Listen","Bedtime",10,[0,4],["Read the same short book in {A} for a week.","Pause before familiar words.","Notice when {N} fills them in."]],
+["Sleepy Body Scan","Listen","Bedtime",10,[2,4],["Softly name body parts in {A}.","{N} relaxes each one as you say it.","End with a gentle goodnight."]],
+["Whisper a Poem","Listen","Bedtime",5,[2,4],["Say a short rhyme in {A} in a whisper.","{N} listens with closed eyes.","Say it once more together."]],
+["Goodnight Sounds","Listen","Bedtime",5,[0,3],["Play soft rain or ocean sounds.","Name each sound in {A}.","Say goodnight to the sound."]],
+
+/* ===== READ ===== */
+["Picture-Book Read-Aloud","Read","Home",20,[0,4],["Read a picture book in {A}.","Pause on each page: ‘What do you see?’","End with three questions: who, where, what happened?"]],
+["Treasure Hunt Clues","Read","Home",25,[3,4],["Write five short clues in {A}, one hiding place each.","{N} reads each clue aloud and finds the next.","The last clue leads to a small treat."]],
+["Read the Room","Read","Home",15,[2,4],["Stick word labels on a few objects.","{N} matches each word card with the right object.","Read each word aloud together."]],
+["Board Book Pointing","Read","Home",10,[0,1],["Pick a sturdy board book in {A}.","Ask: ‘Where is the dog?’","{N} points and you name it."]],
+["Cereal Box Reader","Read","Home",10,[2,4],["Find words on boxes and packages.","Read the ones in {A} aloud together.","Find a word that starts with the first letter of {N}’s name."]],
+["Flashcard Flip","Read","Home",10,[1,4],["Make six cards with a picture and the word in {A}.","Flip one at a time and say the word.","Let {N} choose the next card."]],
+["Recipe Reader","Read","Home",20,[3,4],["Pick a simple recipe in {A}.","Read each step aloud before you do it.","{N} reads the ingredient list while you collect them."]],
+["Our Family Book","Read","Home",20,[1,4],["Print a few family photos and add a short caption in {A}.","Staple them into a little book.","Read it together at bedtime."]],
+
+["Sign Spotter","Read","Car",10,[2,4],["Look out for signs and shop names in {A}.","Read them aloud together.","Score a point for every new word."]],
+["Look-alike Words","Read","Car",10,[3,4],["Hunt for words that look or sound similar in {A} and {B}.","Make a list together.","Talk about why languages share words."]],
+["Pocket Picture Book","Read","Car",10,[0,3],["Keep a small picture book in the car in {A}.","Open it to any page.","Name three things you see on the page."]],
+["Letter Hunt","Read","Car",10,[2,4],["Find the first letter of {N}’s name on signs.","Call it out when you spot one.","Find the next letter of their name."]],
+["Colour Word Spotter","Read","Car",5,[1,3],["Pick a colour and find it outside.","Say the colour in {A}.","Choose a new colour and repeat."]],
+["Story Cards in the Seat Pocket","Read","Car",15,[1,4],["Keep a few picture cards in the seat pocket.","{N} chooses a card and you name it in {A}.","Make a mini story using three cards."]],
+["Read Aloud Relay","Read","Car",15,[3,4],["Take turns reading one page each from a short book in {A}.","Pause to ask what happens next.","Swap who starts on the next trip."]],
+
+["Sign and Word Safari","Read","Outdoors",15,[2,4],["Walk around the neighbourhood and spot written words.","Read the ones in {A} aloud.","Take a photo of your favourite word."]],
+["Library or Bookshop Trip","Read","Outdoors",20,[0,4],["Visit a library or bookshop with books in {A}.","{N} picks one book.","Read the first page together on the spot."]],
+["Storytime Picnic","Read","Outdoors",20,[0,4],["Pack snacks and two picture books in {A}.","Read one before eating and one after.","Ask {N} their favourite picture."]],
+["Nature Labels","Read","Outdoors",15,[2,4],["On a walk, write simple labels in {A} for what you see: tree, flower.","Read them back to {N}.","Stick them in a notebook at home."]],
+["Treasure Map Reader","Read","Outdoors",15,[3,4],["Draw a simple map of the garden or park.","Add a few symbols and short words in {A}.","{N} reads the map and finds the treasure."]],
+["Chalk Word Hop","Read","Outdoors",10,[2,4],["Write four words in {A} in chalk on the ground.","Call a word aloud; {N} hops to it.","Let {N} call the words for you."]],
+["Read to the Animals","Read","Outdoors",10,[0,3],["Find pets, ducks or soft toys outside.","{N} ‘reads’ a picture book to them.","Add one word in {A} on each page."]],
+["Story Walk","Read","Outdoors",20,[1,4],["Place book pages or picture cards along a path.","Walk from page to page and read each one.","Retell the story at the end."]],
+
+["Bedtime Story Reading","Read","Bedtime",20,[0,4],["Pick a short book in {A}.","Read it slowly and point under the words.","Let {N} turn the pages."]],
+["Choose the Book Together","Read","Bedtime",10,[1,4],["Offer two books in {A}.","{N} chooses one and says why.","Read it together."]],
+["Page-by-Page Questions","Read","Bedtime",15,[2,4],["Read one page in {A}.","Ask a simple question: ‘What is the bear doing?’","Wait for the answer before turning the page."]],
+["Be the Reader","Read","Bedtime",10,[3,4],["Choose a short, familiar book.","{N} reads one page aloud while you listen.","Praise the effort and read the rest together."]],
+["Pointing Under the Words","Read","Bedtime",10,[2,4],["Run your finger under each word as you read in {A}.","Slow down on rhymes and repeated words.","Let {N} point to the next word."]],
+["Lift-the-Flap Peekaboo","Read","Bedtime",10,[0,2],["Choose a lift-the-flap book in {A}.","Say ‘Where is…?’ before each flap.","Name what’s underneath together."]],
+["Bedtime Word of the Night","Read","Bedtime",5,[1,4],["Pick one word in {A} from tonight’s story.","Say it and point at it on the page.","Find it again tomorrow."]],
+
+/* ===== WRITE ===== */
+["Label the House","Write","Home",20,[2,4],["Write ten household words in {A} on sticky notes.","Stick them on the right objects.","Draw a small star on each note when {N} can say it without looking."]],
+["Postcard to Family","Write","Home",20,[2,4],["Write or draw a postcard to a relative in {A}.","Add one sentence about the best thing this week.","Send it, or photograph it and share."]],
+["Comic Strip Maker","Write","Home",25,[3,4],["Fold a page into four panels.","Draw a mini story with speech bubbles in {A}.","Read it aloud like actors."]],
+["Crayon Scribbles and Words","Write","Home",10,[0,2],["Give {N} big paper and chunky crayons.","Scribble together and say each colour in {A}.","Hang the best scribble on the wall."]],
+["Shopping List Writer","Write","Home",10,[2,4],["Help {N} write a short shopping list in {A}.","Draw a tiny picture next to each item.","Take the list to the shop."]],
+["Playdough Letters","Write","Home",15,[1,4],["Roll playdough into snakes.","Make the first letter of a word in {A}.","Say the word and add a picture."]],
+["Birthday Card Maker","Write","Home",20,[2,4],["Fold a piece of card in half.","Write a greeting in {A} and decorate it.","Give it to someone special."]],
+["Name Writing Practice","Write","Home",10,[2,4],["Write {N}’s name in big letters.","{N} traces it with a finger, then a crayon.","Decorate each letter."]],
+
+["Finger Writing on a Palm","Write","Car",5,[0,4],["Trace a letter or shape on {N}’s palm with your finger.","{N} guesses what it is.","Say the word in {A} together."]],
+["Travel Journal Doodles","Write","Car",15,[2,4],["Give {N} a notebook and a pencil.","Draw what you see and add a word in {A}.","Read the page aloud at the end of the trip."]],
+["Window Fog Drawing","Write","Car",5,[0,3],["Breathe on the window to make fog.","Draw a shape or letter with a finger.","Say the name in {A}."]],
+["Magnetic Letter Board","Write","Car",10,[2,4],["Bring a small magnetic board with letters.","Build a simple word in {A}.","Mix up the letters and spell it again."]],
+["Car Bingo Marks","Write","Car",10,[2,4],["Draw a bingo card with pictures: tree, bus, dog, house.","Colour a square when you spot each one.","Write the word in {A} next to each square."]],
+["Sticker Story","Write","Car",10,[1,3],["Give {N} a page and a few stickers.","Stick them down and name each one in {A}.","Draw lines between them to make a story."]],
+["Write the Sign","Write","Car",10,[3,4],["Pick a sign you can see.","{N} copies the word onto paper.","Read it aloud in {A}."]],
+
+["Chalk Pavement Words","Write","Outdoors",15,[1,4],["Give {N} chunky chalk.","Write a word in {A} and let {N} trace it.","Draw a picture next to it."]],
+["Stick Writing in the Sand","Write","Outdoors",10,[0,4],["Smooth some sand or soil.","Draw a line, shape or letter with a stick.","Say the name in {A} and wipe it clean."]],
+["Nature Alphabet","Write","Outdoors",20,[2,4],["Collect sticks and leaves.","Arrange them into the first letter of a word in {A}.","Take a photo of your word."]],
+["Water Painting Words","Write","Outdoors",10,[1,4],["Give {N} a brush and a cup of water.","Paint letters or shapes on a wall or paving.","Say the word in {A} before it dries."]],
+["Garden Sign Maker","Write","Outdoors",20,[2,4],["Write the name of a plant in {A} on a lolly stick.","Push the stick in the soil.","Water the plant together and say its name."]],
+["Rock Message Painting","Write","Outdoors",20,[2,4],["Paint a word or a picture on a stone.","Add a short message in {A}.","Leave the stone somewhere kind for others to find."]],
+["Leaf Rubbings with Labels","Write","Outdoors",15,[1,4],["Place a leaf under paper and rub with a crayon.","Label it in {A}: leaf, tree, green.","Collect a few for a nature page."]],
+["Postcard from the Park","Write","Outdoors",15,[3,4],["Draw the park on a card.","Write a short message to a friend in {A}.","Post it or hand it over."]],
+
+["Back Drawing Game","Write","Bedtime",5,[0,4],["Draw a shape or letter on {N}’s back with your finger.","{N} guesses what it is.","Say the word in {A} together, then swap."]],
+["Gratitude Journal","Write","Bedtime",10,[3,4],["Write one thing {N} is thankful for in {A}.","Add a small drawing.","Read the entry aloud."]],
+["Draw Your Day","Write","Bedtime",10,[1,4],["Give {N} a pencil and paper.","Draw the best part of today.","Add a word in {A} to the drawing."]],
+["Goodnight Note","Write","Bedtime",5,[2,4],["Write ‘goodnight’ in {A} on a small note.","Tuck it under the pillow.","Read it together in the morning."]],
+["Dream Drawing","Write","Bedtime",10,[2,4],["Ask {N} what they want to dream about.","Draw it together.","Label it in {A}."]],
+["Air Writing Letters","Write","Bedtime",5,[0,3],["Write a letter in the air with your finger.","{N} copies with a big arm movement.","Say the letter’s sound or a word that starts with it."]],
+["Bedtime Word Collection","Write","Bedtime",5,[3,4],["Keep a small notebook by the bed.","Write one new word in {A} each night.","Read the whole list on Sunday."]],
+
+/* ===== PLAY ===== */
+["Puppet Show","Play","Home",20,[0,3],["One puppet only speaks {A}, the other only {B}.","They have a problem that needs both languages to solve.","{N} is the translator."]],
+["Memory Match","Play","Home",15,[1,4],["Make pairs of cards: a word in {A} and a picture, or the same word in {B}.","Turn them face down and play.","Say each word aloud when you flip it."]],
+["Charades","Play","Home",15,[2,4],["Write verbs in {A} on slips of paper.","Act one out; others guess in {A}.","Winner picks the next verb."]],
+["Pretend Shop","Play","Home",20,[1,4],["Set up a shop with real items and play money.","Practise greetings, prices and ‘please’ and ‘thank you’ in {A}.","Swap shopkeeper and customer."]],
+["Teddy Tea Party","Play","Home",10,[0,3],["Set out cups and toys.","Pour ‘tea’ and ask each guest in {A}: ‘More tea?’","{N} serves the guests."]],
+["Building Block Orders","Play","Home",10,[0,4],["Build a tower together.","Ask for blocks in {A}: ‘red’, ‘big’, ‘one more’.","Swap so {N} gives the orders."]],
+["Hide and Seek Words","Play","Home",15,[1,4],["Hide a few picture cards around the room.","Call the word in {A} to find each one.","Say the word when it is found."]],
+["Dress-Up Day","Play","Home",20,[1,4],["Pick a costume box.","Name each item in {A}: hat, shoes, cape.","Act out a character."]],
+
+["I Spy in Two Languages","Play","Car",10,[2,4],["Play I spy using colours in {A}.","The guesser says the object’s name in {B}.","Score a point for every extra word used."]],
+["Animal Twenty Questions","Play","Car",15,[3,4],["Think of an animal.","{N} asks yes or no questions in {A}.","Guess within twenty questions."]],
+["Finger Puppets","Play","Car",10,[0,3],["Bring two finger puppets.","Let them chat in {A}.","{N} makes the puppets say hello."]],
+["Count the Cars","Play","Car",10,[0,3],["Pick a colour of car.","Count each one you see in {A}.","Compare totals at the end."]],
+["Alphabet Game","Play","Car",15,[3,4],["Find something starting with each letter.","Say the word in {A}.","See how far you can get."]],
+["Rock Paper Scissors","Play","Car",5,[2,4],["Play rock-paper-scissors using {A} for the three words.","Best of five wins.","Let {N} be the referee."]],
+["Opposites Game","Play","Car",10,[2,4],["Say a word in {A}: big.","{N} replies with the opposite: small.","Swap and use gestures for extra fun."]],
+
+["Number Hop","Play","Outdoors",10,[0,3],["Chalk numbers 1 to 10 on the ground.","Call a number in {A}; {N} hops to it.","Swap and let {N} call them."]],
+["Scavenger Hunt","Play","Outdoors",20,[1,4],["Make a list of six things to find in the garden or park.","Read or name each one in {A}.","Tick them off when you find them."]],
+["Bubble Pop Words","Play","Outdoors",10,[0,3],["Blow bubbles.","Say a word in {A} each time you pop one.","Count the bubbles in {A}."]],
+["Ball Toss Words","Play","Outdoors",10,[1,4],["Toss a ball back and forth.","Say a word in {A} each time you catch it.","Swap to counting or colours."]],
+["Colour Tag","Play","Outdoors",15,[1,4],["Call a colour in {A}.","Everyone must touch something that colour.","Last one there is the next caller."]],
+["Obstacle Course Commands","Play","Outdoors",15,[1,4],["Set up cushions, a rope and a hoop.","Call the moves in {A}: jump, crawl, run.","{N} takes a turn as coach."]],
+["Sandcastle Shop","Play","Outdoors",20,[1,4],["Build a sandcastle shop.","Sell shells and stones for pretend money.","Greet and thank in {A}."]],
+["Treasure Map Adventure","Play","Outdoors",20,[3,4],["Draw a map with an X.","Give directions in {A}: left, right, forward.","Dig up the treasure."]],
+
+["Shadow Puppets","Play","Bedtime",10,[1,4],["Use a torch and your hands.","Make an animal shadow and name it in {A}.","{N} tries to make one for you."]],
+["Teddy Bedtime Parade","Play","Bedtime",10,[0,3],["Line up toys.","Say goodnight to each in {A}.","Tuck each one in."]],
+["Pillow Fort Stories","Play","Bedtime",15,[2,4],["Build a pillow fort.","Whisper a story in {A} inside.","Add a line each."]],
+["Quiet Guessing Game","Play","Bedtime",10,[2,4],["Think of an object in the room.","Give clues in {A}.","{N} guesses and then picks one for you."]],
+["Teddy’s Bedtime","Play","Bedtime",10,[0,3],["Say Teddy is sleepy.","Help {N} give Teddy a bath, brush teeth and read a story, saying each in {A}.","Say goodnight to Teddy."]],
+["Sleepy Animal Yoga","Play","Bedtime",10,[1,4],["Stretch like a cat, a bear or a bird.","Name each animal in {A}.","Finish with a slow breath."]],
+["Bedtime Bingo","Play","Bedtime",10,[3,4],["Draw a bingo card with pictures from the room.","Whisper the word in {A} when you spot each one.","Win with a row."]]
 ];
 
 const TIPS=[
@@ -180,8 +310,9 @@ return `<div class="card act"><h3>${esc(a[0])}</h3><span class="chip">${a[1]}</s
 <ol>${a[5].map(s=>'<li>'+fill(s)+'</li>').join('')}</ol>
 <div class="acts"><button class="btn" data-done="${i}">✓ We did it</button><button class="btn alt ${fav?'on':''}" data-fav="${i}" aria-pressed="${fav}">${fav?'♥ Saved':'♡ Save'}</button></div></div>`}
 
-function ageList(){return AC.map((a,i)=>i).filter(i=>AC[i][4].includes(+S.age))}
-function renderToday(){const l=ageList();const i=l[dayNo()%l.length];$('#today').innerHTML=actCard(i).replace('class="card act"','class="act"')+'<p class="sub">A new idea every day, matched to age '+['2–3','4–6','7–9','10+'][S.age]+'.</p>'}
+const AGES=['1–2','2–3','3–4','4–5','5–6'];
+function ageList(){const g=+S.age;return AC.map((a,i)=>i).filter(i=>AC[i][4][0]<=g&&g<=AC[i][4][1])}
+function renderToday(){const sk=$('#ts').value,wh=$('#tw').value;let l=ageList().filter(i=>(!sk||AC[i][1]===sk)&&(!wh||AC[i][2]===wh));if(!l.length)l=ageList();const i=l[dayNo()%l.length];$('#today').innerHTML=actCard(i).replace('class="card act"','class="act"')+'<p class="sub">A new idea every day, matched to age '+AGES[S.age]+'.</p>'}
 function renderMot(n){$('#mot').textContent=MOT[(n===undefined?dayNo():n)%MOT.length]}
 let favOnly=false,shown=null;
 function renderActs(pick){
@@ -196,24 +327,7 @@ function streak(){const d=[...new Set(S.log.map(x=>x.d))].sort().reverse();let n
  while(d.includes(c.toISOString().slice(0,10))){n++;c.setDate(c.getDate()-1)}return n}
 function renderProg(){const wk=Date.now()-7*864e5;
  $('#s1').textContent=streak();$('#s2').textContent=S.log.filter(x=>new Date(x.d)>=wk).length;$('#s3').textContent=S.log.length;
- $('#hist').innerHTML=S.log.length?S.log.slice(-8).reverse().map(x=>`<div>✓ ${esc(AC[x.i][0])} <span class="sub">(${x.d})</span></div>`).join(''):'<p class="sub">Nothing logged yet. Tap “We did it” on any activity.</p>'}
-
-/* worksheets */
-const SAMPLE="dog = perro\ncat = gato\nhouse = casa\nwater = agua\nsun = sol\nbook = libro\ntree = árbol\nfriend = amigo";
-const pairs=()=>$('#words').value.split('\n').map(l=>l.split('=').map(x=>x.trim())).filter(p=>p[0]&&p[1]).map(p=>({a:p[0],b:p[1]}));
-const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-function sheet(){
- const w=pairs(),t=$('#wt').value,A=esc(S.la||'Language 1'),B=esc(S.lb||'Language 2'),N=esc(S.nm||'');
- if(t!=='journal'&&!w.length){alert('Add at least one word pair, one per line, like: dog = hond');return}
- const hd=(ti)=>`<h2>${ti}</h2><div class="nm"><span>Name: ${N||'____________'}</span><span>Date: ____________</span></div>`;
- let h='';
- if(t==='match'){const r=shuf(w).slice(0,10),l=r.map(x=>x);const rr=shuf(r);
-  h=hd('Match the words')+`<p>Draw a line from each ${A} word to its ${B} word.</p><div class="two"><div>${l.map(x=>`<div class="mt" style="margin-bottom:10px">${esc(x.a)}<i class="dot"></i></div>`).join('')}</div><div>${rr.map(x=>`<div class="mt" style="margin-bottom:10px"><i class="dot"></i>${esc(x.b)}</div>`).join('')}</div></div>`}
- if(t==='trace'){h=hd('Copy and trace')+`<p>Trace each word, then write it two more times.</p>`+w.slice(0,8).map(x=>`<div class="tr"><span>${esc(x.a)}</span> ${esc(x.a)} &nbsp; ______ ______</div><div class="tr"><span>${esc(x.b)}</span> ${esc(x.b)} &nbsp; ______ ______</div>`).join('')}
- if(t==='quiz'){const bank=shuf(w).map(x=>esc(x.b)).join(' &nbsp;•&nbsp; ');h=hd('Translate and write')+`<p>Write the ${B} word for each ${A} word. Use the word bank.</p><div class="bank">${bank}</div>`+w.slice(0,10).map((x,i)=>`<p style="margin:14px 0 0">${i+1}. ${esc(x.a)} &nbsp;→&nbsp; ______________________</p>`).join('')}
- if(t==='cards'){h=hd('Flashcards: cut along the dotted lines')+`<div class="cards">${w.slice(0,12).map(x=>`<div class="fc">${esc(x.a)}<small>${esc(x.b)}</small></div>`).join('')}</div><p class="noprint sub">Tip: show the big word, ask for the small one.</p>`}
- if(t==='journal'){h=hd('My day in two languages')+`<p>Draw something from your day.</p><div class="draw"></div><p>In ${A}: ______________________________________________</p><div class="ln"></div><div class="ln"></div><p>In ${B}: ______________________________________________</p><div class="ln"></div><div class="ln"></div><p>New word I learned: ____________________</p>`}
- const s=$('#sheet');s.innerHTML=h;s.classList.remove('hide');$('#pr').classList.remove('hide');s.scrollIntoView({behavior:'smooth',block:'start'})}
+ $('#hist').innerHTML=S.log.length?S.log.filter(x=>AC[x.i]).slice(-8).reverse().map(x=>`<div>✓ ${esc(AC[x.i][0])} <span class="sub">(${x.d})</span></div>`).join(''):'<p class="sub">Nothing logged yet. Tap “We did it” on any activity.</p>'}
 
 /* wiring */
 function tab(t){$$('#nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));['home','acts','ws','tips','prog'].forEach(id=>$('#'+id).classList.toggle('hide',id!==t));
@@ -221,19 +335,17 @@ function tab(t){$$('#nav button').forEach(b=>b.setAttribute('aria-selected',b.da
 $$('#nav button').forEach(b=>b.onclick=()=>tab(b.dataset.t));
 [['nm','nm'],['la','la'],['lb','lb']].forEach(([id,k])=>{const e=$('#'+id);e.value=S[k];e.oninput=()=>{S[k]=e.value;save();renderToday()}});
 $('#age').value=S.age;$('#age').onchange=e=>{S.age=+e.target.value;save();renderToday();renderActs()};
-$('#words').value=S.words;$('#words').oninput=e=>{S.words=e.target.value;save()};
 TIPS.map(t=>t[0]).filter((v,i,a)=>a.indexOf(v)===i).forEach(c=>$('#tc').insertAdjacentHTML('beforeend',`<option>${c}</option>`));
 $('#tc').onchange=renderTips;['fs','fw','ft'].forEach(id=>$('#'+id).onchange=()=>renderActs());
 $('#sur').onclick=()=>renderActs(true);
 $('#favonly').onclick=e=>{favOnly=!favOnly;e.target.classList.toggle('on',favOnly);renderActs()};
 $('#mot2').onclick=()=>renderMot(Math.floor(Math.random()*MOT.length));
-$('#smp').onclick=()=>{$('#words').value=SAMPLE;S.words=SAMPLE;save()};
-$('#mk').onclick=sheet;$('#pr').onclick=()=>window.print();
 $('#rst').onclick=()=>{if(confirm('Clear your progress and saved activities?')){S.log=[];S.favs=[];save();renderProg();renderToday()}};
 $('#tg').onclick=()=>{const dark=getComputedStyle(document.documentElement).getPropertyValue('color-scheme').trim()==='dark';S.theme=dark?'light':'dark';document.documentElement.dataset.theme=S.theme;save()};
 if(S.theme)document.documentElement.dataset.theme=S.theme;
 document.addEventListener('click',e=>{const d=e.target.closest('[data-done]'),f=e.target.closest('[data-fav]');
  if(d){S.log.push({i:+d.dataset.done,d:todayStr()});save();d.textContent='✓ Logged. Well done!';d.disabled=true}
  if(f){const i=+f.dataset.fav,k=S.favs.indexOf(i);k>-1?S.favs.splice(k,1):S.favs.push(i);save();const on=S.favs.includes(i);f.classList.toggle('on',on);f.textContent=on?'♥ Saved':'♡ Save';f.setAttribute('aria-pressed',on)}});
+$('#ts').onchange=$('#tw').onchange=renderToday;
 renderToday();renderMot();
 </script></body></html>
