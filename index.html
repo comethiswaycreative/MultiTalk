@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Many Tongues – activities, worksheets and encouragement for multilingual families</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#ebebe3;--card:#f8f7f2;--ink:#2e2530;--mut:#6a5e66;--line:#c9bdb2;--a:#3b2d3d;--a-ink:#ede0b5;--p:#7a4b79;--pi:#fff;--hi:#ede0b5;--soft:#e7c3e4;--chip:#ede0b5;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#272029;--card:#352b37;--ink:#f3efe6;--mut:#c9bcc2;--line:#5a4b57;--a:#e7c3e4;--a-ink:#2e2530;--p:#e7c3e4;--pi:#2e2530;--hi:#6b5d33;--soft:#4b3a4d;--chip:#5a4f33;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#272029;--card:#352b37;--ink:#f3efe6;--mut:#c9bcc2;--line:#5a4b57;--a:#e7c3e4;--a-ink:#2e2530;--p:#e7c3e4;--pi:#2e2530;--hi:#6b5d33;--soft:#4b3a4d;--chip:#5a4f33;color-scheme:dark}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Fredoka,"Trebuchet MS",sans-serif;font-weight:600;line-height:1.2;margin:0}
+main{max-width:860px;margin:0 auto;padding:16px 16px 80px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 14px}
+header h1{font-size:1.7rem}
+.sub{color:var(--mut);margin:2px 0 0;font-size:.95rem}
+nav{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav button{flex:0 0 auto;font:inherit;font-weight:700;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+nav button[aria-selected=true]{background:var(--a);border-color:var(--a);color:var(--a-ink)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--p);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 12px}
+.hero{background:var(--soft);border:none}
+.hero h2{font-size:1.35rem;margin-bottom:6px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.row>label{flex:1 1 150px;display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.9rem}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:10px;padding:9px 10px;width:100%}
+textarea{min-height:130px;resize:vertical}
+.btn{font:inherit;font-weight:700;border:0;background:var(--a);color:var(--a-ink);border-radius:10px;padding:10px 16px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.on{background:var(--p);color:var(--pi)}
+.chip{display:inline-block;font-size:.82rem;background:var(--chip);border-radius:999px;padding:2px 10px;margin:0 6px 6px 0}
+.act h3{font-size:1.15rem;margin-bottom:6px}
+.act ol{margin:8px 0;padding-left:22px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.quote{font-family:Fredoka,sans-serif;font-size:1.25rem;line-height:1.35}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.stats b{display:block;font:600 2rem Fredoka,sans-serif;color:var(--p)}
+.tip{border-left:6px solid var(--p)}
+.hide{display:none}
+.mark{background:var(--hi);padding:0 4px;border-radius:4px}
+/* worksheet */
+#sheet{background:#fff;color:#111;border:2px dashed var(--line);border-radius:12px;padding:22px;margin-top:12px}
+#sheet h2{font-size:1.4rem;margin-bottom:4px}
+#sheet .nm{display:flex;justify-content:space-between;border-bottom:2px solid #111;margin:10px 0 16px;padding-bottom:4px;font-size:.95rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px 60px}
+.mt{padding:8px 10px;border:2px solid #111;border-radius:8px;font-size:1.15rem;display:flex;justify-content:space-between;align-items:center}
+.dot{width:12px;height:12px;border:2px solid #111;border-radius:50%}
+.tr{font:600 1.7rem Fredoka,sans-serif;color:#aaa;border-bottom:1.5px solid #888;margin:6px 0 14px;word-break:break-word}
+.tr span{color:#111}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.fc{border:1.5px dashed #555;padding:22px 8px;text-align:center;font:600 1.3rem Fredoka,sans-serif}
+.fc small{display:block;font:400 .85rem "Atkinson Hyperlegible",sans-serif;color:#555;margin-top:6px}
+.ln{border-bottom:1.5px solid #888;height:34px}
+.draw{border:2px solid #111;border-radius:10px;height:200px;margin:10px 0}
+.bank{border:2px solid #111;border-radius:10px;padding:8px 12px;margin:10px 0;font-weight:700}
+@media print{
+ body{background:#fff}nav,header,.card,.noprint{display:none!important}
+ main{padding:0;max-width:none}
+ #sheet{display:block!important;border:none;padding:0;margin:0}
+}
+@media (max-width:520px){.two{gap:10px 24px}.cards{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head>
+<body><main>
+<header><div><h1>Many Tongues</h1><p class="sub">Daily ideas, printable worksheets and heart for raising multilingual kids.</p></div>
+<button class="btn alt" id="tg" aria-label="Switch light or dark mode">🌗</button></header>
+
+<nav role="tablist" id="nav">
+<button role="tab" data-t="home" aria-selected="true">Today</button>
+<button role="tab" data-t="acts" aria-selected="false">Activities</button>
+<button role="tab" data-t="ws" aria-selected="false">Worksheets</button>
+<button role="tab" data-t="tips" aria-selected="false">Tips</button>
+<button role="tab" data-t="prog" aria-selected="false">Progress</button>
+</nav>
+
+<section id="home">
+ <div class="card"><h2>Your family</h2>
+  <div class="row">
+   <label>Child’s name<input id="nm" placeholder="e.g. Mia"></label>
+   <label>Age<select id="age"><option value="0">2–3</option><option value="1" selected>4–6</option><option value="2">7–9</option><option value="3">10+</option></select></label>
+  </div>
+  <div class="row" style="margin-top:10px">
+   <label>Language that needs the most support<input id="la" placeholder="e.g. Afrikaans"></label>
+   <label>Other language<input id="lb" placeholder="e.g. Mandarin"></label>
+  </div></div>
+ <div class="card hero"><h2>Today’s idea</h2><div id="today"></div></div>
+ <div class="card"><h2>A word for you</h2><p class="quote" id="mot"></p>
+  <div class="acts"><button class="btn alt" id="mot2">Another one</button></div></div>
+</section>
+
+<section id="acts" class="hide">
+ <div class="card"><div class="row">
+  <label>Skill<select id="fs"><option value="">All</option><option>Speak</option><option>Listen</option><option>Read</option><option>Write</option><option>Play</option></select></label>
+  <label>Where<select id="fw"><option value="">Anywhere</option><option>Home</option><option>Car</option><option>Outdoors</option><option>Bedtime</option></select></label>
+  <label>Time<select id="ft"><option value="99">Any</option><option value="10">10 min or less</option><option value="20">20 min or less</option></select></label>
+ </div>
+ <div class="acts"><button class="btn" id="sur">🎲 Surprise me</button><button class="btn alt" id="favonly">♡ Saved only</button></div></div>
+ <div id="alist"></div>
+</section>
+
+<section id="ws" class="hide">
+ <div class="card"><h2>Make a worksheet</h2>
+  <p class="sub">Type one pair per line, like <b>dog = hond</b>. Use your own words or load samples.</p>
+  <div class="row" style="margin-top:10px"><label style="flex-basis:100%">Word pairs<textarea id="words" placeholder="dog = hond&#10;house = huis"></textarea></label>
+  <label>Type<select id="wt"><option value="match">Match the words</option><option value="trace">Copy and trace</option><option value="quiz">Translate and write</option><option value="cards">Flashcards to cut out</option><option value="journal">My day journal</option></select></label></div>
+  <div class="acts"><button class="btn" id="mk">Create worksheet</button><button class="btn alt" id="smp">Load sample words</button><button class="btn alt hide noprint" id="pr">🖨 Print or save PDF</button></div></div>
+ <div id="sheet" class="hide"></div>
+</section>
+
+<section id="tips" class="hide"><div class="card"><div class="row"><label>Topic<select id="tc"><option value="">All tips</option></select></label></div></div><div id="tlist"></div></section>
+
+<section id="prog" class="hide">
+ <div class="card"><h2>Your streak</h2><div class="stats"><div><b id="s1">0</b>days in a row</div><div><b id="s2">0</b>this week</div><div><b id="s3">0</b>all time</div></div></div>
+ <div class="card"><h2>Recently done</h2><div id="hist"></div></div>
+ <div class="card"><button class="btn alt" id="rst">Clear my progress</button></div>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S={nm:'',age:1,la:'',lb:'',words:'',favs:[],log:[],theme:''};
+try{const r=localStorage.getItem('manytongues');if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+const save=()=>{try{localStorage.setItem('manytongues',JSON.stringify(S))}catch(e){}};
+
+/* [title, skill, where, minutes, ages, steps] — {A} focus language, {B} other language, {N} child */
+const AC=[
+["Language of the Hour","Speak","Home",15,[0,1,2,3],["Pick one hour (after dinner works well) when everyone uses only {A}.","Use gestures, pictures or a whispered translation when {N} gets stuck.","End with a high five and name one new word you learned."]],
+["Show-and-Tell Basket","Speak","Home",10,[0,1],["Fill a basket with five small objects.","{N} pulls one out and names it in {A}, then tries it in {B}.","Swap: you ‘forget’ a word and let {N} teach you."]],
+["I Spy in Two Languages","Play","Car",10,[1,2],["Play I spy using colours in {A}.","The guesser says the object’s name in {B}.","Score a point for every extra word used."]],
+["Story Chain","Speak","Car",15,[1,2,3],["Start a story with one sentence in {A}.","Each person adds a sentence.","When someone shouts ‘plot twist!’ the next sentence switches to {B}."]],
+["Kitchen Words","Speak","Home",20,[0,1,2],["Cook something simple together.","Name ingredients, tools and actions (stir, pour, taste) in {A}.","Read the recipe steps aloud in {A} before you start."]],
+["Bedtime Retell","Listen","Bedtime",10,[0,1,2],["Read a short story in {A}.","Next night, {N} retells it using the pictures.","Praise the effort, not the grammar."]],
+["Song Swap","Listen","Anywhere",10,[0,1,2],["Choose a song in {A}.","Learn the chorus line by line and add actions.","Perform it for a grandparent or a stuffed toy."]],
+["Label the House","Write","Home",20,[0,1,2],["Write ten household words in {A} on sticky notes.","Stick them on the right objects.","Draw a small star on each note when {N} can say it without looking."]],
+["Postcard to Family","Write","Home",20,[1,2,3],["Write or draw a postcard to a relative in {A}.","Add one sentence about the best thing this week.","Send it, or photograph it and share."]],
+["Voice Message Pen Pals","Speak","Anywhere",10,[1,2,3],["Record a short voice message in {A} for a relative or friend.","Ask them a question to answer next time.","Keep the messages to hear progress later."]],
+["Treasure Hunt Clues","Read","Home",25,[1,2],["Write five short clues in {A}, one hiding place each.","{N} reads each clue aloud and finds the next.","The last clue leads to a small treat."]],
+["Question Jar","Speak","Home",10,[1,2,3],["Fill a jar with questions in {A}: ‘What made you laugh today?’","Each person draws one at dinner.","Answer in {A}, even if it’s only a few words."]],
+["Walk and Name","Speak","Outdoors",15,[0,1],["Take a short walk.","Name everything you see in {A}: trees, cars, birds.","Collect three leaves or stones and name them again at home."]],
+["Look-alike Words","Read","Anywhere",10,[2,3],["Hunt for words that look or sound similar in {A} and {B}.","Make a list together.","Talk about why languages share words."]],
+["Puppet Show","Play","Home",20,[0,1,2],["One puppet only speaks {A}, the other only {B}.","They have a problem that needs both languages to solve.","{N} is the translator."]],
+["Picture-Book Read-Aloud","Read","Bedtime",20,[0,1,2,3],["Read a picture book in {A}.","Pause on each page: ‘What do you see?’","End with three questions: who, where, what happened?"]],
+["Comic Strip Maker","Write","Home",25,[2,3],["Fold a page into four panels.","Draw a mini story with speech bubbles in {A}.","Read it aloud like actors."]],
+["Memory Match","Play","Home",15,[0,1,2],["Make pairs of cards: a word in {A} and a picture, or the same word in {B}.","Turn them face down and play.","Say each word aloud when you flip it."]],
+["Number Hop","Play","Outdoors",10,[0,1],["Chalk numbers 1 to 10 on the ground.","Call a number in {A}; {N} hops to it.","Swap and let {N} call them."]],
+["Family Interview","Speak","Anywhere",10,[2,3],["Write five questions in {A}.","Interview a parent, grandparent or friend.","Write down one surprising answer."]],
+["Two-Language Gratitude","Speak","Bedtime",5,[0,1,2,3],["Each person shares one thing they are thankful for in {A}.","Say it again in {B}.","Switch who goes first each night."]],
+["Podcast Time","Listen","Car",20,[2,3],["Play a kids’ podcast or audiobook in {A}.","Pause at the end and ask for the best moment.","Retell it in one sentence."]],
+["Charades","Play","Home",15,[1,2,3],["Write verbs in {A} on slips of paper.","Act one out; others guess in {A}.","Winner picks the next verb."]],
+["Pretend Shop","Play","Home",20,[0,1,2],["Set up a shop with real items and play money.","Practise greetings, prices and ‘please’ and ‘thank you’ in {A}.","Swap shopkeeper and customer."]]
+];
+
+const TIPS=[
+["Consistency","Pick a pattern and keep it","Whether it’s one parent one language, a home language, or a time and place rule, children cope best with a pattern that is predictable."],
+["Consistency","Little and often beats long and rare","Ten relaxed minutes every day builds more than a big weekend lesson. Attach language time to routines you already have."],
+["Confidence","Answer the meaning, not the mistake","If {N} says something wrong, repeat it back correctly and keep going. Constant correction can make children go quiet."],
+["Confidence","Never force, always invite","Pressure makes a language feel like a chore. Make it a game, a secret code, or a family tradition."],
+["Mixing","Language mixing is normal","Mixing words from two languages shows skill, not confusion. Gently model the full sentence in one language and carry on."],
+["Mixing","Don’t panic about a delay","Multilingual children may seem slower in one language at first, but their total vocabulary across languages is usually on par with or ahead of their peers."],
+["School","When school language takes over","Expect the school language to become the strongest. Keep the home language alive with books, calls, songs and visits."],
+["School","Share the plan with teachers","Tell teachers which languages are spoken at home so they see your child’s strengths."],
+["Family","Make relatives your allies","Regular video calls with grandparents give your child a real reason to speak. Short and frequent works best."],
+["Family","Find a community","Playgroups, weekend schools or even one friend who speaks the language make it feel useful, not just a rule at home."],
+["Reading","Read in the language you want to grow","Reading is the most powerful vocabulary builder. Library visits, picture books and audiobooks all count."],
+["Reading","Let them choose the books","Interest beats level. Comics, cookbooks and magazines in the target language still build skills."],
+["Confidence","Celebrate the bilingual moments","Point out when your child helps someone, translates a sign or understands a joke in two languages. Let them feel how powerful it is."],
+["Family","Be kind to yourself","You are doing something generous and difficult. Some days the language rule will slip, and that’s fine. Start again tomorrow."]
+];
+const MOT=["Every word you share is a door you’re opening for your child.","Progress in two languages is slow, steady and absolutely worth it.","You’re not just teaching words. You’re handing down a family, a place and a way of seeing.","A bad day of language practice is still a day your child heard you.","One song, one story, one conversation. That counts.","Your child doesn’t need a perfect parent, just a present one.","Languages grow in warmth. Keep it playful.","Small habits quietly become fluency.","Being understood in two languages is a gift your child will thank you for.","Comparison steals joy. Your child is on their own path.","If you only managed five minutes today, you did something real.","Your accent, your stories and your lullabies are exactly what your child needs.","Mistakes are proof of trying. Cheer for the trying.","Raising a multilingual child is a long game. Keep showing up."];
+
+const fill=(s)=>s.replace(/\{A\}/g,'<b>'+esc(S.la||'your focus language')+'</b>').replace(/\{B\}/g,'<b>'+esc(S.lb||'the other language')+'</b>').replace(/\{N\}/g,esc(S.nm||'your child'));
+const plain=s=>fill(s).replace(/<\/?b>/g,'');
+const todayStr=()=>new Date().toISOString().slice(0,10);
+const dayNo=()=>Math.floor(Date.now()/864e5);
+
+function actCard(i,i2){const a=AC[i];const fav=S.favs.includes(i);
+return `<div class="card act"><h3>${esc(a[0])}</h3><span class="chip">${a[1]}</span><span class="chip">${a[2]}</span><span class="chip">${a[3]} min</span>
+<ol>${a[5].map(s=>'<li>'+fill(s)+'</li>').join('')}</ol>
+<div class="acts"><button class="btn" data-done="${i}">✓ We did it</button><button class="btn alt ${fav?'on':''}" data-fav="${i}" aria-pressed="${fav}">${fav?'♥ Saved':'♡ Save'}</button></div></div>`}
+
+function ageList(){return AC.map((a,i)=>i).filter(i=>AC[i][4].includes(+S.age))}
+function renderToday(){const l=ageList();const i=l[dayNo()%l.length];$('#today').innerHTML=actCard(i).replace('class="card act"','class="act"')+'<p class="sub">A new idea every day, matched to age '+['2–3','4–6','7–9','10+'][S.age]+'.</p>'}
+function renderMot(n){$('#mot').textContent=MOT[(n===undefined?dayNo():n)%MOT.length]}
+let favOnly=false,shown=null;
+function renderActs(pick){
+ const sk=$('#fs').value,wh=$('#fw').value,tm=+$('#ft').value;
+ let l=ageList().filter(i=>(!sk||AC[i][1]===sk)&&(!wh||AC[i][2]===wh||AC[i][2]==='Anywhere')&&AC[i][3]<=tm&&(!favOnly||S.favs.includes(i)));
+ if(pick&&l.length)l=[l[Math.floor(Math.random()*l.length)]];
+ $('#alist').innerHTML=l.length?l.map(i=>actCard(i)).join(''):'<div class="card">Nothing matches yet. Loosen a filter'+(favOnly?' or save some activities with ♡':'')+'.</div>'}
+function renderTips(){const c=$('#tc').value;const n=esc(S.nm||'your child');
+ $('#tlist').innerHTML=TIPS.filter(t=>!c||t[0]===c).map(t=>`<div class="card tip"><span class="chip">${t[0]}</span><h3>${t[1]}</h3><p style="margin:6px 0 0">${t[2].replace(/\{N\}/g,n)}</p></div>`).join('')}
+function streak(){const d=[...new Set(S.log.map(x=>x.d))].sort().reverse();let n=0,c=new Date();
+ if(!d.includes(c.toISOString().slice(0,10)))c.setDate(c.getDate()-1);
+ while(d.includes(c.toISOString().slice(0,10))){n++;c.setDate(c.getDate()-1)}return n}
+function renderProg(){const wk=Date.now()-7*864e5;
+ $('#s1').textContent=streak();$('#s2').textContent=S.log.filter(x=>new Date(x.d)>=wk).length;$('#s3').textContent=S.log.length;
+ $('#hist').innerHTML=S.log.length?S.log.slice(-8).reverse().map(x=>`<div>✓ ${esc(AC[x.i][0])} <span class="sub">(${x.d})</span></div>`).join(''):'<p class="sub">Nothing logged yet. Tap “We did it” on any activity.</p>'}
+
+/* worksheets */
+const SAMPLE="dog = perro\ncat = gato\nhouse = casa\nwater = agua\nsun = sol\nbook = libro\ntree = árbol\nfriend = amigo";
+const pairs=()=>$('#words').value.split('\n').map(l=>l.split('=').map(x=>x.trim())).filter(p=>p[0]&&p[1]).map(p=>({a:p[0],b:p[1]}));
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function sheet(){
+ const w=pairs(),t=$('#wt').value,A=esc(S.la||'Language 1'),B=esc(S.lb||'Language 2'),N=esc(S.nm||'');
+ if(t!=='journal'&&!w.length){alert('Add at least one word pair, one per line, like: dog = hond');return}
+ const hd=(ti)=>`<h2>${ti}</h2><div class="nm"><span>Name: ${N||'____________'}</span><span>Date: ____________</span></div>`;
+ let h='';
+ if(t==='match'){const r=shuf(w).slice(0,10),l=r.map(x=>x);const rr=shuf(r);
+  h=hd('Match the words')+`<p>Draw a line from each ${A} word to its ${B} word.</p><div class="two"><div>${l.map(x=>`<div class="mt" style="margin-bottom:10px">${esc(x.a)}<i class="dot"></i></div>`).join('')}</div><div>${rr.map(x=>`<div class="mt" style="margin-bottom:10px"><i class="dot"></i>${esc(x.b)}</div>`).join('')}</div></div>`}
+ if(t==='trace'){h=hd('Copy and trace')+`<p>Trace each word, then write it two more times.</p>`+w.slice(0,8).map(x=>`<div class="tr"><span>${esc(x.a)}</span> ${esc(x.a)} &nbsp; ______ ______</div><div class="tr"><span>${esc(x.b)}</span> ${esc(x.b)} &nbsp; ______ ______</div>`).join('')}
+ if(t==='quiz'){const bank=shuf(w).map(x=>esc(x.b)).join(' &nbsp;•&nbsp; ');h=hd('Translate and write')+`<p>Write the ${B} word for each ${A} word. Use the word bank.</p><div class="bank">${bank}</div>`+w.slice(0,10).map((x,i)=>`<p style="margin:14px 0 0">${i+1}. ${esc(x.a)} &nbsp;→&nbsp; ______________________</p>`).join('')}
+ if(t==='cards'){h=hd('Flashcards: cut along the dotted lines')+`<div class="cards">${w.slice(0,12).map(x=>`<div class="fc">${esc(x.a)}<small>${esc(x.b)}</small></div>`).join('')}</div><p class="noprint sub">Tip: show the big word, ask for the small one.</p>`}
+ if(t==='journal'){h=hd('My day in two languages')+`<p>Draw something from your day.</p><div class="draw"></div><p>In ${A}: ______________________________________________</p><div class="ln"></div><div class="ln"></div><p>In ${B}: ______________________________________________</p><div class="ln"></div><div class="ln"></div><p>New word I learned: ____________________</p>`}
+ const s=$('#sheet');s.innerHTML=h;s.classList.remove('hide');$('#pr').classList.remove('hide');s.scrollIntoView({behavior:'smooth',block:'start'})}
+
+/* wiring */
+function tab(t){$$('#nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));['home','acts','ws','tips','prog'].forEach(id=>$('#'+id).classList.toggle('hide',id!==t));
+ if(t==='acts')renderActs();if(t==='tips')renderTips();if(t==='prog')renderProg();window.scrollTo(0,0)}
+$$('#nav button').forEach(b=>b.onclick=()=>tab(b.dataset.t));
+[['nm','nm'],['la','la'],['lb','lb']].forEach(([id,k])=>{const e=$('#'+id);e.value=S[k];e.oninput=()=>{S[k]=e.value;save();renderToday()}});
+$('#age').value=S.age;$('#age').onchange=e=>{S.age=+e.target.value;save();renderToday();renderActs()};
+$('#words').value=S.words;$('#words').oninput=e=>{S.words=e.target.value;save()};
+TIPS.map(t=>t[0]).filter((v,i,a)=>a.indexOf(v)===i).forEach(c=>$('#tc').insertAdjacentHTML('beforeend',`<option>${c}</option>`));
+$('#tc').onchange=renderTips;['fs','fw','ft'].forEach(id=>$('#'+id).onchange=()=>renderActs());
+$('#sur').onclick=()=>renderActs(true);
+$('#favonly').onclick=e=>{favOnly=!favOnly;e.target.classList.toggle('on',favOnly);renderActs()};
+$('#mot2').onclick=()=>renderMot(Math.floor(Math.random()*MOT.length));
+$('#smp').onclick=()=>{$('#words').value=SAMPLE;S.words=SAMPLE;save()};
+$('#mk').onclick=sheet;$('#pr').onclick=()=>window.print();
+$('#rst').onclick=()=>{if(confirm('Clear your progress and saved activities?')){S.log=[];S.favs=[];save();renderProg();renderToday()}};
+$('#tg').onclick=()=>{const dark=getComputedStyle(document.documentElement).getPropertyValue('color-scheme').trim()==='dark';S.theme=dark?'light':'dark';document.documentElement.dataset.theme=S.theme;save()};
+if(S.theme)document.documentElement.dataset.theme=S.theme;
+document.addEventListener('click',e=>{const d=e.target.closest('[data-done]'),f=e.target.closest('[data-fav]');
+ if(d){S.log.push({i:+d.dataset.done,d:todayStr()});save();d.textContent='✓ Logged. Well done!';d.disabled=true}
+ if(f){const i=+f.dataset.fav,k=S.favs.indexOf(i);k>-1?S.favs.splice(k,1):S.favs.push(i);save();const on=S.favs.includes(i);f.classList.toggle('on',on);f.textContent=on?'♥ Saved':'♡ Save';f.setAttribute('aria-pressed',on)}});
+renderToday();renderMot();
+</script></body></html>
